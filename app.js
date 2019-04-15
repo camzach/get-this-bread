@@ -1,12 +1,19 @@
-const mysql = require('mysql');
+var mysql = require('mysql');
 
-const con = mysql.createConnection({
+var connection = mysql.createConnection({
     host: "breadbotdb.cmhbynacteb0.us-east-1.rds.amazonaws.com",
     user: "breadmaster",
-    password: "breadmaster"
+    password: "breadmaster",
+    port: 3306
 });
 
-con.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected!");
+connection.connect(function(err) {
+    if (err) {
+        console.error('Database connection failed: ' + err.stack);
+        return;
+    }
+
+    console.log('Connected to database.');
 });
+
+connection.end();
