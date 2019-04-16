@@ -9,6 +9,8 @@ CreateUser.addEventListener('submit', (e) => {
 });
 
 function post(path, data) {
+
+    console.log(JSON.stringify(data));
     return window.fetch(path, {
         method: 'POST',
         headers: {

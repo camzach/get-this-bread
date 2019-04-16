@@ -27,7 +27,6 @@ app.use(express.static('public'));
 app.listen(3000, () => console.log('Server running on port 3000'));
 
 app.post('/createUser', (req, res) => {
-    console.log(req);
     store
         .createUser({
             nickname: req.body.nickname,
