@@ -6,10 +6,10 @@ module.exports = {
     deploy: {
         production: {
             user: 'ec2-user',
-            host: 'http://ec2-54-174-134-52.compute-1.amazonaws.com/',
+            host: 'ec2-54-174-134-52.compute-1.amazonaws.com/',
             key: '~/.ssh/id_rsa.pub',
             ref: 'origin/master',
-            repo: 'https://github.com/camzach/get-this-bread.git',
+            repo: 'github.com/camzach/get-this-bread.git',
             path: '~/get-this-bread',
             'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
         }
