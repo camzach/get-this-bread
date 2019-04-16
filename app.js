@@ -29,7 +29,7 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 
 app.post('/createUser', (req, res) => {
     const phoneNumber = phone(req.body.phoneNumber, '');
-    if (!(phone[0] && phone[1] === 'US')) {
+    if (!(phoneNumber[0] && phoneNumber[1] === 'US')) {
         res.sendStatus(400);
     } else {
         store
