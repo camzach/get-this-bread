@@ -12,9 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "latest",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
-    "body-parser": "latest"
+    "phone": "^2.3.10"
   },
   "devDependencies": {
     "pm2": "^3.5.0"
