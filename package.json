@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "body-parser": "latest"
   },
   "devDependencies": {
     "pm2": "^3.5.0"
