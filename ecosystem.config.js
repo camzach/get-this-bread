@@ -1,16 +1,16 @@
 module.exports = {
     apps: [{
-        name: 'tutorial-2',
-        script: './index.js'
+        name: 'bread',
+        script: './app.js'
     }],
     deploy: {
         production: {
             user: 'ec2-user',
-            host: 'ec2-54-174-134-52.compute-1.amazonaws.com',
-            key: '~/.ssh/id_rsa',
+            host: 'ec2-3-91-148-201.compute-1.amazonaws.com',
+            key: '~/.ssh/awsKey.pem',
             ref: 'origin/master',
-            repo: 'github.com/camzach/get-this-bread.git',
-            path: '~/get-this-bread',
+            repo: 'git@github.com:camzach/get-this-bread.git',
+            path: '/home/ec2-user/get-this-bread',
             'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
         }
     }
