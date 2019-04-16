@@ -29,8 +29,8 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 app.post('/createUser', (req, res) => {
     store
         .createUser({
-            username: req.body.username,
-            password: req.body.password
+            nickname: req.body.nickname,
+            phone: req.body.phoneNumber
         })
         .then(() => res.sendStatus(200))
 });

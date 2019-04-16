@@ -1,9 +1,11 @@
+const phone = require('phone');
+
 const CreateUser = document.querySelector('.CreateUser');
 CreateUser.addEventListener('submit', (e) => {
     e.preventDefault();
-    const username = CreateUser.querySelector('.username').value;
-    const password = CreateUser.querySelector('.password').value;
-    post('/createUser', {username, password})
+    const nickname = CreateUser.querySelector('.nickname').value;
+    const phoneNumber = phone(CreateUser.querySelector('.phone').value, '')[0];
+    post('/createUser', {nickname, phoneNumber})
 });
 
 function post(path, data) {

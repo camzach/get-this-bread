@@ -1,6 +1,6 @@
 module.exports = {
-    createUser ({ username, password }) {
-        console.log(`Add user ${username} with password ${password}`);
+    createUser ({ nickname, phone }) {
+        console.log(`Add user ${nickname} with phone ${phone}`);
         return Promise.resolve()
     }
 };
