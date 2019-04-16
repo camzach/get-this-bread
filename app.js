@@ -28,14 +28,14 @@ app.use(express.static('public'));
 app.listen(3000, () => console.log('Server running on port 3000'));
 
 app.post('/createUser', (req, res) => {
-    const phone = phone(req.body.phoneNumber, '');
+    const phoneNumber = phone(req.body.phoneNumber, '');
     if (!(phone[0] && phone[1] === 'US')) {
         res.sendStatus(400);
     } else {
         store
             .createUser({
                 nickname: req.body.nickname,
-                phone: req.body.phoneNumber
+                phone: phoneNumber
             })
             .then(() => res.sendStatus(200))
     }
