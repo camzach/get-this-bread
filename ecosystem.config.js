@@ -7,7 +7,7 @@ module.exports = {
         production: {
             user: 'ec2-user',
             host: 'ec2-54-174-134-52.compute-1.amazonaws.com',
-            key: '~/.ssh/id_rsa.pub',
+            key: '~/.ssh/id_rsa',
             ref: 'origin/master',
             repo: 'github.com/camzach/get-this-bread.git',
             path: '~/get-this-bread',
