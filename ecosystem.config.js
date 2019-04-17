@@ -7,7 +7,7 @@ module.exports = {
     }],
     deploy: {
         production: {
-            user: process.env.USER,
+            user: "ec2-user",
             host: process.env.HOST,
             key: process.env.KEY,
             ref: process.env.REF,
