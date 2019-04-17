@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-console.log(`the db name is ${process.env.DB_NAME}`);
-
 module.exports = {
     client: 'mysql',
     connection: {
