@@ -8,11 +8,11 @@ module.exports = {
     deploy: {
         production: {
             user: "ec2-user",
-            host: process.env.HOST,
-            key: process.env.KEY,
-            ref: process.env.REF,
-            repo: process.env.REPO,
-            path: process.env.PATH,
+            host: "ec2-3-91-148-201.compute-1.amazonaws.com",
+            key: "~/.ssh/awsKey.pem",
+            ref: "origin/master",
+            repo: "git@github.com:camzach/get-this-bread.git",
+            path: "/home/ec2-user/get-this-bread",
             'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
         }
     }
