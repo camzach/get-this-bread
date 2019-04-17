@@ -37,7 +37,7 @@ app.post('/createUser', (req, res) => {
         store
             .createUser({
                 nickname: req.body.nickname,
-                phone: phoneNumber
+                phone: phoneNumber[0]
             })
             .then(() => res.sendStatus(200))
     }
