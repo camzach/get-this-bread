@@ -1,11 +1,13 @@
+require('dotenv').config();
+
 const mysql = require('mysql');
 const phone = require('phone');
 
 const connection = mysql.createConnection({
-    host: "breadbotdb.cmhbynacteb0.us-east-1.rds.amazonaws.com",
-    user: "breadmaster",
-    password: "breadmaster",
-    port: 3306
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    port: process.env.PORT
 });
 
 connection.connect(function (err) {
