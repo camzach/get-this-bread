@@ -6,5 +6,10 @@ module.exports = {
         return knex('user').insert({
             nickname, phone
         })
+    },
+
+    deleteUser({phone}) {
+        console.log(`Removing user with phone ${phone}`);
+        return knex('user').where('phone', phone).del();
     }
 };
