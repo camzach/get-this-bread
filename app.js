@@ -31,6 +31,6 @@ app.delete('/user/:phone', (req, res) => {
     if (!(phoneNumber[0] && phoneNumber[1] === 'USA')) {
         res.sendStatus(400);
     } else {
-        store.deleteUser(phoneNumber).then(() => res.sendStatus(200));
+        store.deleteUser(phoneNumber[0]).then(() => res.sendStatus(200));
     }
 });
