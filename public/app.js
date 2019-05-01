@@ -3,14 +3,18 @@ CreateUser.addEventListener('submit', (e) => {
     e.preventDefault();
     const nickname = CreateUser.querySelector('.nickname').value;
     const phone = CreateUser.querySelector('.phone').value;
-    post('/createUser', {nickname, phone})
+    if (nickname && phone) {
+        post('/createUser', {nickname, phone})
+    }
 });
 
 const DeleteUser = document.querySelector('.DeleteUser');
 DeleteUser.addEventListener('submit', (e) => {
     e.preventDefault();
     const phone = DeleteUser.querySelector('.phone').value;
-    del(`/user/${phone}`)
+    if (phone) {
+        del(`/user/${phone}`)
+    }
 });
 
 function post(path, data) {
@@ -23,6 +27,7 @@ function post(path, data) {
         body: JSON.stringify(data)
     })
 }
+
 function del(path) {
     return window.fetch(path, {
         method: 'DELETE'
