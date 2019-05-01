@@ -10,7 +10,7 @@ const DeleteUser = document.querySelector('.DeleteUser');
 DeleteUser.addEventListener('submit', (e) => {
     e.preventDefault();
     const phone = DeleteUser.querySelector('.phone').value;
-    post('/deleteUser', {phone})
+    del(`/user/${phone}`)
 });
 
 function post(path, data) {
@@ -21,5 +21,10 @@ function post(path, data) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
+    })
+}
+function del(path) {
+    return window.fetch(path, {
+        method: 'DELETE'
     })
 }
