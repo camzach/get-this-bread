@@ -22,13 +22,13 @@ app.post('/user', (req, res) => {
                 nickname: req.body.nickname,
                 phone: phoneNumber[0]
             })
-            .then((response) => res.send(response))
+            .then(() => res.sendStatus(200))
     }
 });
 
 app.delete('/user/:phone', (req, res) => {
     if (req.params["phone"]) {
-        store.deleteUser(req.params["phone"]).then((response) => res.send(response));
+        store.deleteUser(req.params["phone"]).then(() => res.sendStatus(200));
     } else {
         res.sendStatus(400);
     }
