@@ -1,23 +1,6 @@
 require('dotenv').config();
 
-const mysql = require('mysql');
 const phone = require('phone');
-
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    port: process.env.PORT
-});
-
-connection.connect(function (err) {
-    if (err) {
-        console.error('Database connection failed: ' + err.stack);
-        return;
-    }
-
-    console.log('Connected to database.');
-});
 
 const store = require('./store');
 const express = require('express');
@@ -29,8 +12,8 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.listen(3000, () => console.log('Server running on port 3000'));
 
-app.post('/createUser', (req, res) => {
-    const phoneNumber = phone(req.body.phoneNumber, '');
+app.post('/user', (req, res) => {
+    const phoneNumber = phone(req.body.phone, '');
     if (!(phoneNumber[0] && phoneNumber[1] === 'USA')) {
         res.sendStatus(400);
     } else {
@@ -43,4 +26,10 @@ app.post('/createUser', (req, res) => {
     }
 });
 
-connection.end();
+app.delete('/user/:phone', (req, res) => {
+    if (req.params["phone"]) {
+        store.deleteUser(req.params["phone"]).then(() => res.sendStatus(200));
+    } else {
+        res.sendStatus(400);
+    }
+});
