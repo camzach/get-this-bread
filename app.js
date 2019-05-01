@@ -27,9 +27,10 @@ app.post('/user', (req, res) => {
 });
 
 app.delete('/user/:phone', (req, res) => {
-    if (req.params["phone"]) {
-        store.deleteUser(req.params["phone"]).then(() => res.sendStatus(200));
-    } else {
+    const phoneNumber = phone(req.params.phone, '');
+    if (!(phoneNumber[0] && phoneNumber[1] === 'USA')) {
         res.sendStatus(400);
+    } else {
+        store.deleteUser(req.params.phone).then(() => res.sendStatus(200));
     }
 });
