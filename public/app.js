@@ -4,7 +4,7 @@ CreateUser.addEventListener('submit', (e) => {
     const nickname = CreateUser.querySelector('.nickname').value;
     const phone = CreateUser.querySelector('.phone').value;
     if (nickname && phone) {
-        post('/createUser', {nickname, phone})
+        post('/user', {nickname, phone})
     }
 });
 

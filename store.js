@@ -8,6 +8,10 @@ module.exports = {
         })
     },
 
+    getUsers() {
+        return knex('user').select('nickname', 'phone');
+    },
+
     deleteUser(phone) {
         console.log(`Removing user with phone ${phone}`);
         return knex('user').where({phone}).del();

@@ -1,10 +1,17 @@
 require('dotenv').config();
 
 const phone = require('phone');
+const cron = require('node-cron');
 
 const store = require('./store');
 const express = require('express');
 const bodyParser = require('body-parser');
+
+
+const twilio = require('twilio');
+const accountSid = process.env.TWILIO_SID;
+const authToken = process.env.TWILIO_TOKEN;
+var client = new twilio(accountSid, authToken);
 
 const app = express();
 
@@ -33,4 +40,17 @@ app.delete('/user/:phone', (req, res) => {
     } else {
         store.deleteUser(phoneNumber[0]).then(() => res.sendStatus(200));
     }
+});
+
+cron.schedule('0 6 * * *', () => {
+    store.getUsers().then((users) => {
+        users.forEach((user) => {
+            console.log(`Sending a text to ${user.nickname} at ${user.phone}.`);
+            client.messages.create({
+                body: `Good morning, ${user.nickname}! Let's get this bread!`,
+                to: user.phone,
+                from: process.env.TWILIO_NUMBER
+            });
+        });
+    });
 });
