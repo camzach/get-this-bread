@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 const twilio = require('twilio');
 const accountSid = process.env.TWILIO_SID;
 const authToken = process.env.TWILIO_TOKEN;
-var client = new twilio(accountSid, authToken);
+const client = new twilio(accountSid, authToken);
 
 const app = express();
 
