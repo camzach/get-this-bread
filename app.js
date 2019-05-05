@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('custom-env').env(true);
 
 const phone = require('phone');
 const cron = require('node-cron');
