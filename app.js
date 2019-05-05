@@ -42,7 +42,7 @@ app.delete('/user/:phone', (req, res) => {
     }
 });
 
-cron.schedule('6 0 * * *', () => {
+cron.schedule(process.env.CRON_SCHEUDLE, () => {
     Promise.all([store.getGreetings(), store.getUsers()]).then((greetings, users) => {
         users.forEach((user) => {
             console.log(`Sending a text to ${user.nickname} at ${user.phone}.`);
