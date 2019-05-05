@@ -4,7 +4,15 @@ CreateUser.addEventListener('submit', (e) => {
     const nickname = CreateUser.querySelector('.nickname').value;
     const phone = CreateUser.querySelector('.phone').value;
     if (nickname && phone) {
-        post('/user', {nickname, phone})
+        post('/user', {nickname, phone}).then((response) => {
+            if (response.ok) {
+                CreateUser.querySelector('.nickname').value = "";
+                CreateUser.querySelector('.phone').value = "";
+                alert("User added successfully!");
+            } else {
+                alert("Could not add user.")
+            }
+        });
     }
 });
 
@@ -13,7 +21,14 @@ DeleteUser.addEventListener('submit', (e) => {
     e.preventDefault();
     const phone = DeleteUser.querySelector('.phone').value;
     if (phone) {
-        del(`/user/${phone}`)
+        del(`/user/${phone}`).then((response) => {
+            if (response.ok) {
+                DeleteUser.querySelector('.phone').value = "";
+                alert("User deleted successfully!");
+            } else {
+                alert("Could not delete user.")
+            }
+        })
     }
 });
 
