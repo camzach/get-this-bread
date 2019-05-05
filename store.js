@@ -15,5 +15,9 @@ module.exports = {
     deleteUser(phone) {
         console.log(`Removing user with phone ${phone}`);
         return knex('user').where({phone}).del();
+    },
+
+    getGreetings() {
+        return knex('greeting').select('greeting');
     }
 };

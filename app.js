@@ -42,12 +42,12 @@ app.delete('/user/:phone', (req, res) => {
     }
 });
 
-cron.schedule('0 6 * * *', () => {
-    store.getUsers().then((users) => {
+cron.schedule('6 0 * * *', () => {
+    Promise.all([store.getGreetings(), store.getUsers()]).then((greetings, users) => {
         users.forEach((user) => {
             console.log(`Sending a text to ${user.nickname} at ${user.phone}.`);
             client.messages.create({
-                body: `Good morning, ${user.nickname}! Let's get this bread!`,
+                body: `Good morning, ${user.nickname}! ${greetings[Math.floor(Math.random() * greetings.length)]['greeting']}`,
                 to: user.phone,
                 from: process.env.TWILIO_NUMBER
             });
