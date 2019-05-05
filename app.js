@@ -43,7 +43,9 @@ app.delete('/user/:phone', (req, res) => {
 });
 
 cron.schedule(process.env.CRON_SCHEDULE, () => {
-    Promise.all([store.getGreetings(), store.getUsers()]).then((greetings, users) => {
+    Promise.all([store.getGreetings(), store.getUsers()]).then((responses) => {
+        const greetings = responses[0];
+        const users = responses[1];
         users.forEach((user) => {
             console.log(`Sending a text to ${user.nickname} at ${user.phone}.`);
             client.messages.create({
