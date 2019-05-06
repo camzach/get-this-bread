@@ -1,0 +1,11 @@
+module.exports = ["Let's get this bread!",
+    "Let's yeet this wheat!",
+    "Let's gain this grain!",
+    "Let's cop this crust!",
+    "Let's land this loaf!",
+    "Let's take this toast!",
+    "Let's procure this pumpernickel!",
+    "Let's purchase this pita!",
+    "Let's bag this baguette!",
+    "Let's receive this rye!",
+    "Let's nab this naan!"];
