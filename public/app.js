@@ -3,11 +3,13 @@ CreateUser.addEventListener('submit', (e) => {
     e.preventDefault();
     const nickname = CreateUser.querySelector('.nickname').value;
     const phone = CreateUser.querySelector('.phone').value;
-    if (nickname && phone) {
-        post('/user', {nickname, phone}).then((response) => {
+    const sendTime = CreateUser.querySelector('.sendTime').value;
+    if (nickname && phone && sendTime) {
+        post('/user', {nickname, phone, sendTime}).then((response) => {
             if (response.ok) {
                 CreateUser.querySelector('.nickname').value = "";
                 CreateUser.querySelector('.phone').value = "";
+                CreateUser.querySelector('.sendTime').value = "";
                 alert("User added successfully!");
             } else {
                 alert("Could not add user.")
