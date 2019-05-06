@@ -6,7 +6,6 @@ const authToken = process.env.TWILIO_TOKEN;
 const client = new twilio(accountSid, authToken);
 
 const cron = require('node-cron');
-const store = require("./store");
 
 const greetings = require('./greetings');
 let events = {};
@@ -34,7 +33,7 @@ function addUser(user) {
             events[user.sendTime].forEach((user) => {
                 console.log(`Sending a text to ${user.nickname} at ${user.phone}.`);
                 client.messages.create({
-                    body: `Good morning, ${user.nickname}! ${greetings[Math.floor(Math.random() * greetings.length)]['greeting']}`,
+                    body: `Good morning, ${user.nickname}! ${greetings[Math.floor(Math.random() * greetings.length)]}`,
                     to: user.phone,
                     from: process.env.TWILIO_NUMBER
                 });
